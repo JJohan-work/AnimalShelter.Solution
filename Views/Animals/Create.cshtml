@@ -1,3 +1,6 @@
+@using AnimalShelter.Models
+
+
 @{
   Layout = "_Layout";
 }
@@ -8,12 +11,19 @@
 
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.Type)
-  @Html.TextBoxFor(model => model.Type)
+  @Html.DropDownListFor(model => model.Type,
+  new SelectList(Enum.GetValues(typeof(AnimalType))),
+  "Select Type")
+  @* @Html.LabelFor(model => model.Type)
+  @Html.TextBoxFor(model => model.Type) *@
   @Html.LabelFor(model => model.Name)
   @Html.TextBoxFor(model => model.Name)
-  @Html.LabelFor(model => model.Gender)
-  @Html.TextBoxFor(model => model.Gender)
+
+  @Html.DropDownListFor(model =>model.Gender,
+  new SelectList(Enum.GetValues(typeof(Gender))),
+  "Select Gender")
+  @* @Html.LabelFor(model => model.Gender)
+  @Html.TextBoxFor(model => model.Gender) *@
   @* @Html.LabelFor(model => model.Admittance)
   @Html.TextBoxFor(model => model.Admittance) *@
   @Html.LabelFor(model => model.Breed)

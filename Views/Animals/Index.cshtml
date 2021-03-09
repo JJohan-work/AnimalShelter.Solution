@@ -6,6 +6,10 @@
 
 <h1>Animals</h1>
 
+<p>@Html.ActionLink("Sort By Default", "Index", new {userInput = "Default"})</p>
+<p>@Html.ActionLink("Sort By Type", "Index", new {userInput = "EnglishType"})</p>
+<p>@Html.ActionLink("Sort By Name", "Index", new {userInput = "Name"})</p>
+
 @if (Model.Count == 0)
 {
   <h3>No animals have been added yet.</h3>

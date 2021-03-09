@@ -15,10 +15,23 @@ namespace AnimalShelter.Controllers
       _db = db;
     }
 
-    public ActionResult Index()
+    public ActionResult Index(string userInput)
     {
-      List<Animal> model = _db.Animals.ToList();
-      return View(model);
+      if (userInput == "EnglishType")
+      {
+        List<Animal> model = _db.Animals.OrderBy(model => model.EnglishType).ToList();
+        return View(model);
+      }
+      else if (userInput == "Name")
+      {
+        List<Animal> model = _db.Animals.OrderBy(model => model.Name).ToList();
+        return View(model);
+      }
+      else
+      {
+        List<Animal> model = _db.Animals.ToList();
+        return View(model);
+      }
     }
 
     public ActionResult Create()
@@ -31,6 +44,8 @@ namespace AnimalShelter.Controllers
     {
       DateTime now = DateTime.Now;
       animal.Admittance = $"{now.Year}-{now.Month:00}-{now.Day:00}";
+      string savedType = Enum.GetName(typeof(AnimalType),animal.Type);
+      animal.EnglishType = savedType;
       _db.Animals.Add(animal);
       _db.SaveChanges();
       return RedirectToAction("Index");
