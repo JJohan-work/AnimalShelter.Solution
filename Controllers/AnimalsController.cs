@@ -33,6 +33,20 @@ namespace AnimalShelter.Controllers
         return View(model);
       }
     }
+    // public ActionResult IndexSearch(string searchAnimals)
+    // {
+    //   // List<Animal> animals = _db.Animals;
+    //   if (!String.IsNullOrEmpty(searchAnimals))
+    //   {
+    //     var animals = _db.Animals.Where(model => model.EnglishType.Contains(searchAnimals) || s.Name.Contains(searchAnimals));
+    //     return View("Index", animals);
+    //   }
+    //   else
+    //   {
+    //     var animals = _db.Animals;
+    //     return View("Index", animals);
+    //   }
+    // }
 
     public ActionResult Create()
     {
